@@ -1,3 +1,3 @@
 class Task < ApplicationRecord
-    attribute :isDone, :boolean, default: false
+  attribute :isDone, :boolean, default: false
 end

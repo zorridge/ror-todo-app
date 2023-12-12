@@ -1,1 +1,12 @@
 <h1>Tasks</h1>
+
+<% @tasks.each do |task| %>
+    <b><%= task.title %></b>
+    <br/>
+    Status: <%= task.isDone ? 'Done' : 'Not Done' %>
+    <br/>
+    <%= task.deadline <= Date.today ? 'Overdue' : 'Upcoming' %>
+    <br/>
+    <%= link_to 'Edit', task %>
+    <p/>
+<% end %>

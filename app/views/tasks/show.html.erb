@@ -1,0 +1,6 @@
+<h1><%= @task.title %></h1>
+
+<p>Status: <%= @task.isDone ? 'Done' : 'Not Done' %></p>
+<p>Due: <%= @task.deadline %></p>
+
+<%= link_to 'Back', tasks_path %>
