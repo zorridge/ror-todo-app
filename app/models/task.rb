@@ -4,6 +4,7 @@ class Task < ApplicationRecord
 
   validate :deadline_cannot_be_in_the_past
 
+  validates :isDone, inclusion: { in: [true, false] }
   attribute :isDone, :boolean, default: false
 
   private

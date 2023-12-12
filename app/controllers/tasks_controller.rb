@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(isDone: :asc)
   end
 
   def show
@@ -28,7 +28,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
 
-    if @task.update(task_params)
+    if params[:task][:isDone].present?
+      @task.update(isDone: true)
+      redirect_to root_path
+    elsif @task.update(task_params)
       redirect_to @task
     else
       render :edit, status: :unprocessable_entity
@@ -45,6 +48,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :deadline)
+    params.require(:task).permit(:title, :deadline, :isDone)
   end
 end
